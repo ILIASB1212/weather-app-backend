@@ -1,5 +1,6 @@
-# PM Accelerator Weather APIThis is a FastAPI application designed to fetch current and historical weather data.
-It uses SQLModel (a combination of SQLAlchemy and Pydantic) to store a history of requests and aggregated forecast data in a local SQLite database (weather.db).
+# PM Accelerator Weather APIT
+- his is a FastAPI application designed to fetch current and historical weather data.
+- It uses SQLModel (a combination of SQLAlchemy and Pydantic) to store a history of requests and aggregated forecast data in a local SQLite database (weather.db).
 ### 🚀 Quick StartTo run this API
 - you need Python 3.9+ and the required packages.
 - Install dependencies (from requirements.txt):pip install -r requirements.txt
