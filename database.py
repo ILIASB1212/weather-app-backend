@@ -25,7 +25,6 @@ class WeatherRequest(SQLModel, table=True):
     overall_max_temp_c: float
     full_forecast_json: str = Field(default="[]")
 
-    # Optional note field for update operations
     note: Optional[str] = None
 
 

@@ -46,9 +46,10 @@ async def root():
     return {
         "message": "Welcome to the PM Accelerator Weather API!",
         "developer": "Ilias Baher", 
-        "info_button_description": """Hiring and getting hired for product management roles is hard. In the short timeframe of an interview, it is difficult to precisely assess and display the necessary, complex skills.
-                                        Product Managers play key roles in a company. Hiring for those positions shouldn‘t be a guessing game.
-                                        It is our vision, to make it simple and beneficial for Product Managers to accurately display their skills and empower hiring companies to choose the right Product Manager every time"""}
+        "info_button_description": """Hiring and getting hired for product management roles is hard. In the short timeframe of an interview,
+                                     it is difficult to precisely assess and display the necessary, complex skills.
+                                    Product Managers play key roles in a company. Hiring for those positions shouldn't be a guessing game.
+                                    It is our vision, to make it simple and beneficial for Product Managers to accurately display their skills and empower hiring companies to choose the right Product Manager every time"""}
 
 @app.post("/weather")
 async def get_current_weather(location: OneLocationRequest):
@@ -156,6 +157,7 @@ async def create_request(
             status_code=404,
             detail="No forecast data available for the specified location/date range."
         )
+    
     overall_min = min(min_temps)
     overall_max = max(max_temps)
     db_entry = WeatherRequest(
@@ -219,11 +221,11 @@ async def read_request(request_id: int, session: Session = Depends(get_session))
 async def read_all_requests(session: Session = Depends(get_session)):
     """READ: Retrieves all stored weather request records from the database."""
     
-    # Query all records
+    # query all records
     statements = select(WeatherRequest)
     results = session.exec(statements).all()
     
-    # Convert date/datetime objects to strings for clean JSON output
+    # cnvert date/datetime objects to strings for clean JSON output
     clean_results = []
     for db_request in results:
         # Use model_dump to get a dict representation
@@ -309,7 +311,7 @@ async def delete_request(request_id: int, session: Session = Depends(get_session
     return
 
 
-# --- Optional API Integration (2.2) ---
+# --- API Integration ---
 
 @app.post("/location_info")
 async def get_location_info(location: LocationRequest):
@@ -335,7 +337,7 @@ async def google_search_youtube_videos(query: str):
     ]
 
 
-# --- Data Export (2.3) ---
+# --- json export data ---
 
 @app.get("/export_json/{request_id}")
 async def export_json(request_id: int, session: Session = Depends(get_session)):
